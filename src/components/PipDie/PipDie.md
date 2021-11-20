@@ -1,0 +1,5 @@
+Die example:
+
+```js
+<PipDie />
+```
