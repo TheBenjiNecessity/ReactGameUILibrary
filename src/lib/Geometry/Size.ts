@@ -1,11 +1,5 @@
 export default class Size {
-    height: number;
-    width: number;
-
-    constructor(height: number, width: number) {
-        this.height = height;
-        this.width = width;
-    }
+    constructor(public height: number, public width: number) {}
 
     static get zero() {
         return new Size(0, 0);
