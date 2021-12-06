@@ -1,37 +1,36 @@
-class Point {
-    constructor(x, y) {
+export default class Point {
+    x: number;
+    y: number;
+
+    constructor(x: number, y: number) {
         this.x = x;
         this.y = y;
     }
 
-    getDistance(point) {
+    static get zero() {
+        return new Point(0, 0);
+    }
+
+    getDistance(point: Point) {
         const diffX = Math.pow(this.x - point.x, 2);
         const diffY = Math.pow(this.y - point.y, 2);
         return Math.sqrt(diffX + diffY);
     }
 
-    isEqualTo(point) {
+    isEqualTo(point: Point) {
         return this.x === point.x && this.y === point.y;
     }
 
-    translate(x, y) {
+    translate(x: number, y: number) {
         this.x += x;
         this.y += y;
     }
 
-    translateX(x) {
+    translateX(x: number) {
         this.translate(x, 0);
     }
 
-    translateY(y) {
+    translateY(y: number) {
         this.translate(0, y);
     }
 }
-
-export const makePoint = (x, y) => {
-    return new Point(x, y);
-};
-
-export const pointZero = () => {
-    return new Point(0, 0);
-};
