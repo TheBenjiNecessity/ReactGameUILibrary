@@ -1,5 +1,38 @@
-Die example:
+Sprite example:
 
 ```js
-<Sprite image="https://i.stack.imgur.com/sOemp.png" coordX={0} coordY={0} height={75} width={75}/>
+<>
+  <div>
+    <Sprite
+      image="https://i.stack.imgur.com/sOemp.png"
+      coordX={0}
+      coordY={0}
+      height={75}
+      width={75}
+    />
+    <Sprite
+      image="https://i.stack.imgur.com/sOemp.png"
+      coordX={-75}
+      coordY={0}
+      height={75}
+      width={75}
+    />
+  </div>
+  <div>
+    <Sprite
+      image="https://i.stack.imgur.com/sOemp.png"
+      coordX={0}
+      coordY={-75}
+      height={75}
+      width={75}
+    />
+    <Sprite
+      image="https://i.stack.imgur.com/sOemp.png"
+      coordX={-75}
+      coordY={-75}
+      height={75}
+      width={75}
+    />
+  </div>
+</>
 ```
