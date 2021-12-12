@@ -1,15 +1,16 @@
 import React from "react";
+import { textColorForHex } from "../../../services/color.service";
 import classes from "./NumberDie.module.scss";
 
 export const DIE_COLOR = {
-    WHITE: "white",
-    BLACK: "black",
-    RED: "red",
-    GREEN: "green",
-    BLUE: "blue",
-    YELLOW: "yellow",
-    ORANGE: "orange",
-    PURPLE: "purple",
+    WHITE: "#ffffff",
+    BLACK: "#000000",
+    RED: "#ff0000",
+    GREEN: "#00ff00",
+    BLUE: "#0000ff",
+    YELLOW: "#ffff00",
+    ORANGE: "#FFA500",
+    PURPLE: "#800080",
 };
 
 type NumberDieProps = {
@@ -20,24 +21,18 @@ type NumberDieProps = {
 
 const NumberDie = ({ faceValue, dimension, color }: NumberDieProps) => {
     const dimensionString = dimension + "px";
-    let classNames = [classes["die"]];
-    let backgroundColor = "";
-
-    if (color.startsWith("#") && (color.length === 7 || color.length === 4)) {
-        backgroundColor = color;
-    } else {
-        classNames.push(classes[color]);
-    }
+    const textColor = textColorForHex(color);
 
     return (
         <div
-            className={classNames.join(" ")}
+            className={classes["die"]}
             style={{
                 height: dimensionString,
                 width: dimensionString,
                 fontSize: dimensionString,
                 lineHeight: dimensionString,
-                backgroundColor: backgroundColor,
+                backgroundColor: color,
+                color: textColor,
             }}
         >
             {faceValue}
