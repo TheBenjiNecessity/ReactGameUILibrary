@@ -1,5 +1,5 @@
 {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "remimarsal.prettier-now",
     "prettier.tabWidth": 4
 }
