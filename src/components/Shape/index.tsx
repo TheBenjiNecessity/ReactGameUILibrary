@@ -13,7 +13,6 @@ export enum SHAPE {
 	SQUARE,
 	CIRCLE,
 	TRIANGLE,
-	SHIELD,
 	HEXAGON,
 	OCTAGON,
 	DIAMOND,
@@ -24,7 +23,6 @@ const SHAPE_ICON = {
 	[SHAPE.SQUARE]: Square,
 	[SHAPE.CIRCLE]: Circle,
 	[SHAPE.TRIANGLE]: Triangle,
-	[SHAPE.SHIELD]: Pentagon,
 	[SHAPE.HEXAGON]: Hexagon,
 	[SHAPE.OCTAGON]: Octagon,
 	[SHAPE.DIAMOND]: Diamond,
@@ -33,23 +31,25 @@ const SHAPE_ICON = {
 
 type Props = {
 	children: object;
+	className?: string;
 	shape: SHAPE;
 };
 
 const Shape = (props: ShapeProps & Props) => {
-	const { children, color, size, shape } = props;
+	const { children, className, color, size, shape } = props;
+	const classNames = [ className, classes['shape'] ].join(' ');
 	const Component = useMemo(() => SHAPE_ICON[shape], [ shape ]);
 
 	return (
 		<div
-			className={classes['shape']}
+			className={classNames}
 			style={{
 				height: `${size}px`,
 				width: `${size}px`
 			}}
 		>
 			<Component height={size} width={size} fill={color} stroke={color} />
-			<div className={classes['shape-wrapper']}>{children}</div>
+			{children && <div className={classes['shape-wrapper']}>{children}</div>}
 		</div>
 	);
 };
