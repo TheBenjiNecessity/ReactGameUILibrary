@@ -1,7 +1,7 @@
 StringDice example:
 
 ```js
-import { DIE_COLOR } from ".";
+import { DIE_COLOR } from "../Dice";
 import { SHAPE } from "../../Shape";
 
 <>
