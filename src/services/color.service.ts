@@ -42,9 +42,9 @@ export const hexToHSL = (hex: string) => {
 export const textColorForHex = (hex: string) => {
 	const hsl = hexToHSL(hex);
 
-	if (hsl && hsl.l >= 0.5) {
-		return '#000';
-	}
+    if (hsl && hsl.l >= 0.5) {
+        return "#000";
+    }
 
-	return '#fff';
+    return "#fff";
 };
