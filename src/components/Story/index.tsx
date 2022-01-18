@@ -20,9 +20,6 @@ type StoryProps = {
     children: any;
 };
 
-// TODO: needs error checking on chapter (duration value is negative/two chapters have the same id)
-// TODO: needs to be able to pause the execution with 'activate'
-
 const Story = ({
     activate,
     chapterIndex,
@@ -64,7 +61,7 @@ const Story = ({
             if (activate && duration) {
                 const timer = setTimeout(() => {
                     goToNextStep();
-                }, duration);
+                }, Math.abs(duration));
                 return () => clearTimeout(timer);
             }
         }
