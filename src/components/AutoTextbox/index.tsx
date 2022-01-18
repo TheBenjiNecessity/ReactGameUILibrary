@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState, cloneElement } from 'react';
-import * as _ from 'lodash';
+import { useEffect, useMemo, useState, cloneElement } from 'react';
+import _ from 'lodash';
 
 type AutoTextboxProps = {
 	animate: boolean;
@@ -23,12 +23,12 @@ const AutoTextbox = (props: AutoTextboxProps) => {
 		() => {
 			return value.slice(0, currentLength);
 		},
-		[ currentLength ]
+		[currentLength, value]
 	);
 
 	const TextBoxComponent = useMemo(
 		() => cloneElement(textbox, { ...restProps, value: currentValue, disabled: true }),
-		[ textbox, currentValue ]
+		[textbox, restProps, currentValue]
 	);
 
 	useEffect(
@@ -41,7 +41,7 @@ const AutoTextbox = (props: AutoTextboxProps) => {
 				onFinish();
 			}
 		},
-		[ animate, currentLength ]
+		[animate, currentLength, onFinish, value.length]
 	);
 
 	useEffect(
@@ -51,7 +51,7 @@ const AutoTextbox = (props: AutoTextboxProps) => {
 				onReset();
 			}
 		},
-		[ reset ]
+		[onReset, reset]
 	);
 
 	return TextBoxComponent;

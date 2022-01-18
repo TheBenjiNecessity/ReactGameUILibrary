@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { textColorForHex } from '../../../services/color.service';
 import { SHAPE } from '../../Shape';
 import Dice from '../Dice';
