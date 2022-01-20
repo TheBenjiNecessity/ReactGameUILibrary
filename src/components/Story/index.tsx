@@ -24,8 +24,8 @@ const Story = ({
     activate,
     chapterIndex,
     setChapterIndex,
-    didGoNext,
-    didEnd,
+    didGoNext = () => {},
+    didEnd = () => {},
     getNextIndex = (index: number) => index + 1,
     children,
 }: StoryProps) => {
@@ -33,11 +33,10 @@ const Story = ({
 
     const goToNextStep = useCallback(() => {
         const nextChapterId = getNextIndex(chapterIndex);
+        const count = React.Children.count(children);
 
-        if (!nextChapterId || nextChapterId >= React.Children.count(children)) {
-            if (didEnd && typeof didEnd === "function") {
-                didEnd();
-            }
+        if (!nextChapterId || nextChapterId >= count || nextChapterId < 0) {
+            didEnd();
         } else {
             setChapterIndex(nextChapterId);
             didGoNext(chapterIndex, nextChapterId);
@@ -59,9 +58,7 @@ const Story = ({
             const { duration } = child.props;
 
             if (activate && duration) {
-                const timer = setTimeout(() => {
-                    goToNextStep();
-                }, Math.abs(duration));
+                const timer = setTimeout(goToNextStep, Math.abs(duration));
                 return () => clearTimeout(timer);
             }
         }
