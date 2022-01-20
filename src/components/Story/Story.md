@@ -14,6 +14,9 @@ const didGoNext = useCallback((previous, next) => {
 const didEnd = useCallback(() => {
     setMessage("done");
 }, []);
+const getNextIndex = useCallback((currentIndex) => {
+    return {0: 1, 1: 2, 2: 3, 3: null  }[currentIndex];
+}, []);
 
 <>
     <button onClick={() => setActivate(!activate)}>activate</button>
@@ -25,6 +28,7 @@ const didEnd = useCallback(() => {
             didEnd={didEnd}
             chapterIndex={chapterIndex}
             setChapterIndex={setChapterIndex}
+            getNextIndex={getNextIndex}
         >
             <Story.Chapter duration={3000}>Chapter 1</Story.Chapter>
             <Story.Chapter duration={3000}>Chapter 2</Story.Chapter>
