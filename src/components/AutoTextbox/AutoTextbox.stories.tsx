@@ -41,3 +41,5 @@ export const Primary = () => {
         </>
     );
 };
+
+Primary.storyName = "AutoTextbox";
