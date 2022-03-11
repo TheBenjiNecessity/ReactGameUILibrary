@@ -1,4 +1,4 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import Shape, { SHAPE } from "../../Shape";
 
 export const DIE_COLOR = {
@@ -12,18 +12,24 @@ export const DIE_COLOR = {
     PURPLE: "#800080",
 };
 
-type DieProps = {
-    children: object;
+export type DieProps = {
     size: number;
     color: string;
+};
+
+export type DieShapeProps = {
     shape: SHAPE;
 };
 
-const Dice = (props: DieProps) => {
-    const { children, size, color, shape } = props;
+type Props = {
+    children: object;
+};
+
+const Dice = (props: Props & DieProps & DieShapeProps) => {
+    const { children, size, color, shape, ...restProps } = props;
 
     return (
-        <Shape size={size} color={color} shape={shape}>
+        <Shape size={size} color={color} shape={shape} {...restProps}>
             {children}
         </Shape>
     );
