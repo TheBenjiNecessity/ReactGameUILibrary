@@ -6,8 +6,6 @@ import StringDice from ".";
 import { DIE_COLOR } from "../Dice";
 import { SHAPE } from "../../Shape";
 
-import classes from "../../stories.module.scss";
-
 export default {
     title: "StringDice",
     component: StringDice,
@@ -15,78 +13,78 @@ export default {
 
 export const Primary: ComponentStory<typeof StringDice> = () => (
     <>
-        <div className={classes.presentingContainer}>
+        <p>
             <StringDice
                 faceValue="1"
                 size={60}
                 color={DIE_COLOR.BLACK}
                 shape={SHAPE.SQUARE}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="2"
                 size={60}
                 color={DIE_COLOR.BLACK}
                 shape={SHAPE.SQUARE}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="3"
                 size={60}
                 color={DIE_COLOR.BLACK}
                 shape={SHAPE.SQUARE}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="4"
                 size={60}
                 color={DIE_COLOR.BLACK}
                 shape={SHAPE.SQUARE}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="5"
                 size={60}
                 color={DIE_COLOR.BLACK}
                 shape={SHAPE.SQUARE}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="6"
                 size={60}
                 color={DIE_COLOR.BLACK}
                 shape={SHAPE.SQUARE}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="7"
                 size={60}
                 color={DIE_COLOR.BLACK}
                 shape={SHAPE.SQUARE}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="8"
                 size={60}
                 color={DIE_COLOR.BLACK}
                 shape={SHAPE.SQUARE}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="9"
                 size={60}
                 color={DIE_COLOR.BLACK}
                 shape={SHAPE.SQUARE}
             />
-        </div>
+        </p>
     </>
 );
 
@@ -94,62 +92,62 @@ Primary.storyName = "StringDice";
 
 export const Secondary: ComponentStory<typeof StringDice> = () => (
     <>
-        <div className={classes.presentingContainer}>
+        <p>
             <StringDice
                 faceValue="4"
                 size={60}
                 color={DIE_COLOR.BLACK}
                 shape={SHAPE.SQUARE}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="4"
                 size={60}
                 color={DIE_COLOR.BLACK}
                 shape={SHAPE.CIRCLE}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="4"
                 size={60}
                 color={DIE_COLOR.RED}
                 shape={SHAPE.TRIANGLE}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="4"
                 size={60}
                 color={DIE_COLOR.BLUE}
                 shape={SHAPE.PENTAGON}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="4"
                 size={60}
                 color={DIE_COLOR.GREEN}
                 shape={SHAPE.HEXAGON}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="4"
                 size={60}
                 color={DIE_COLOR.YELLOW}
                 shape={SHAPE.OCTAGON}
             />
-        </div>
-        <div className={classes.presentingContainer}>
+        </p>
+        <p>
             <StringDice
                 faceValue="4"
                 size={60}
                 color={DIE_COLOR.ORANGE}
                 shape={SHAPE.DIAMOND}
             />
-        </div>
+        </p>
     </>
 );
 
