@@ -15,85 +15,6 @@ export const Primary: ComponentStory<typeof StringDice> = () => (
     <>
         <p>
             <StringDice
-                faceValue="1"
-                size={60}
-                color={DIE_COLOR.BLACK}
-                shape={SHAPE.SQUARE}
-            />
-        </p>
-        <p>
-            <StringDice
-                faceValue="2"
-                size={60}
-                color={DIE_COLOR.BLACK}
-                shape={SHAPE.SQUARE}
-            />
-        </p>
-        <p>
-            <StringDice
-                faceValue="3"
-                size={60}
-                color={DIE_COLOR.BLACK}
-                shape={SHAPE.SQUARE}
-            />
-        </p>
-        <p>
-            <StringDice
-                faceValue="4"
-                size={60}
-                color={DIE_COLOR.BLACK}
-                shape={SHAPE.SQUARE}
-            />
-        </p>
-        <p>
-            <StringDice
-                faceValue="5"
-                size={60}
-                color={DIE_COLOR.BLACK}
-                shape={SHAPE.SQUARE}
-            />
-        </p>
-        <p>
-            <StringDice
-                faceValue="6"
-                size={60}
-                color={DIE_COLOR.BLACK}
-                shape={SHAPE.SQUARE}
-            />
-        </p>
-        <p>
-            <StringDice
-                faceValue="7"
-                size={60}
-                color={DIE_COLOR.BLACK}
-                shape={SHAPE.SQUARE}
-            />
-        </p>
-        <p>
-            <StringDice
-                faceValue="8"
-                size={60}
-                color={DIE_COLOR.BLACK}
-                shape={SHAPE.SQUARE}
-            />
-        </p>
-        <p>
-            <StringDice
-                faceValue="9"
-                size={60}
-                color={DIE_COLOR.BLACK}
-                shape={SHAPE.SQUARE}
-            />
-        </p>
-    </>
-);
-
-Primary.storyName = "StringDice";
-
-export const Secondary: ComponentStory<typeof StringDice> = () => (
-    <>
-        <p>
-            <StringDice
                 faceValue="4"
                 size={60}
                 color={DIE_COLOR.BLACK}
@@ -151,4 +72,4 @@ export const Secondary: ComponentStory<typeof StringDice> = () => (
     </>
 );
 
-Secondary.storyName = "StringDice with various shapes and colors";
+Primary.storyName = "StringDice";
