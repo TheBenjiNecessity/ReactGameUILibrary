@@ -21,11 +21,9 @@ export type DieShapeProps = {
     shape: SHAPE;
 };
 
-type Props = {
-    children: object;
-};
-
-const Dice = (props: Props & DieProps & DieShapeProps) => {
+const Dice = (
+    props: DieProps & DieShapeProps & HTMLAttributes<HTMLDivElement>
+) => {
     const { children, size, color, shape, ...restProps } = props;
 
     return (

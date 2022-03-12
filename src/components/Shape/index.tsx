@@ -1,10 +1,10 @@
-import React, { useMemo } from "react";
+import React, { useMemo, HTMLAttributes } from "react";
 import classes from "./Shape.module.scss";
 import { ReactComponent as Pentagon } from "../../assets/images/pentagon.svg";
 import { ReactComponent as Diamond } from "../../assets/images/diamond.svg";
 import { ReactComponent as Hexagon } from "../../assets/images/hexagon.svg";
 import { ReactComponent as Octagon } from "../../assets/images/octagon.svg";
-import { ShapeProps } from "./ShapeProps";
+import { ShapeProps } from "./Types";
 import Square from "./Square";
 import Circle from "./Circle";
 import Triangle from "./Triangle";
@@ -40,12 +40,10 @@ export const SHAPE_CLASS = {
 };
 
 type Props = {
-    children: object;
-    className?: string;
     shape: SHAPE;
 };
 
-const Shape = (props: ShapeProps & Props) => {
+const Shape = (props: ShapeProps & Props & HTMLAttributes<HTMLDivElement>) => {
     const { children, className, color, size, shape } = props;
     const classNames = [className, classes["shape"]].join(" ");
     const Component = useMemo(() => SHAPE_ICON[shape], [shape]);

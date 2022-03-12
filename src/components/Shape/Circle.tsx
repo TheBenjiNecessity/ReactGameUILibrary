@@ -1,22 +1,18 @@
-type CircleProps = {
-	fill: string;
-	height: number;
-	width: number;
-};
+import { ShapeComponentProps } from "./Types";
 
-const Circle = (props: CircleProps) => {
-	const { height, width, fill } = props;
+const Circle = (props: ShapeComponentProps) => {
+    const { height, width, fill } = props;
 
-	return (
-		<div
-			style={{
-				height: `${height}px`,
-				width: `${width}px`,
-				backgroundColor: fill,
-				borderRadius: '50%'
-			}}
-		/>
-	);
+    return (
+        <div
+            style={{
+                height: `${height}px`,
+                width: `${width}px`,
+                backgroundColor: fill,
+                borderRadius: "50%",
+            }}
+        />
+    );
 };
 
 export default Circle;

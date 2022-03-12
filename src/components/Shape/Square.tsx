@@ -1,21 +1,17 @@
-type SquareProps = {
-	fill: string;
-	height: number;
-	width: number;
-};
+import { ShapeComponentProps } from "./Types";
 
-const Square = (props: SquareProps) => {
-	const { height, width, fill } = props;
+const Square = (props: ShapeComponentProps) => {
+    const { height, width, fill } = props;
 
-	return (
-		<div
-			style={{
-				height: `${height}px`,
-				width: `${width}px`,
-				backgroundColor: fill
-			}}
-		/>
-	);
+    return (
+        <div
+            style={{
+                height: `${height}px`,
+                width: `${width}px`,
+                backgroundColor: fill,
+            }}
+        />
+    );
 };
 
 export default Square;
