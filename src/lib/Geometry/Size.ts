@@ -1,5 +1,9 @@
 export default class Size {
-    constructor(public height: number, public width: number) {}
+    constructor(public height: number, public width: number) {
+        if (height < 0 || width < 0) {
+            throw new Error("Size cannot have negative dimentions");
+        }
+    }
 
     static get zero() {
         return new Size(0, 0);
