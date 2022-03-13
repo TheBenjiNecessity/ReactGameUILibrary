@@ -1,15 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import Chapter from "./Chapter";
 
-/**
- * Show a series of
- * @param {boolean} activate - Story will only execute if activate is true, will pause if false.
- * @param {boolean} goNext - A message from parent to go to the next step programmatically.
- * @param {callback} didGoNext - Called whenever this component goes to the next step (sends parameters for previous stepIndex and next stepIndex)
- * @param {callback} didEnd - Called when the story is over
- * @param {callback} getNextIndex - Function provided by the parent component telling Story what index to go to on moving next.
- * @returns
- */
 type StoryProps = {
     activate: boolean;
     chapterIndex: number;
@@ -20,6 +11,15 @@ type StoryProps = {
     children: any;
 };
 
+/**
+ * Show a series of sub components called "Chapters" in succession. Simply set the "activate" prop to true and the Story
+ * component will show each Chapter component one at a time either after a timer or on parent state change
+ * @param {boolean} activate - Story will only execute if activate is true, will pause if false.
+ * @param {callback} didGoNext - Called whenever this component goes to the next step (sends parameters for previous stepIndex and next stepIndex)
+ * @param {callback} didEnd - Called when the story is over
+ * @param {callback} getNextIndex - Function provided by the parent component telling Story what index to go to on moving next.
+ * @returns
+ */
 const Story = ({
     activate,
     chapterIndex,
