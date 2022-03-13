@@ -4,7 +4,7 @@ import { ComponentMeta } from "@storybook/react";
 import AutoTextbox from ".";
 
 export default {
-    title: "Example/AutoTextbox",
+    title: "AutoTextbox",
     component: AutoTextbox,
     argTypes: {
         backgroundColor: { control: "color" },
