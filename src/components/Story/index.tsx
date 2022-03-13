@@ -64,7 +64,7 @@ const Story = ({
         }
     }, [activate, chapterIndex, childArray, children, goToNextStep]);
 
-    return React.Children.toArray(children)[chapterIndex];
+    return <>{React.Children.toArray(children)[chapterIndex]}</>;
 };
 
 Story.Chapter = Chapter;
