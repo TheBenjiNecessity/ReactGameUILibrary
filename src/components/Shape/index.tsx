@@ -1,4 +1,5 @@
 import React, { useMemo, HTMLAttributes } from "react";
+import clsx from "clsx";
 import classes from "./Shape.module.scss";
 import { ReactComponent as Pentagon } from "../../assets/images/pentagon.svg";
 import { ReactComponent as Diamond } from "../../assets/images/diamond.svg";
@@ -45,12 +46,11 @@ type Props = {
 
 const Shape = (props: ShapeProps & Props & HTMLAttributes<HTMLDivElement>) => {
     const { children, className, color, size, shape } = props;
-    const classNames = [className, classes["shape"]].join(" ");
     const Component = useMemo(() => SHAPE_ICON[shape], [shape]);
 
     return (
         <div
-            className={classNames}
+            className={clsx(className, classes["shape"])}
             style={{
                 height: `${size}px`,
                 width: `${size}px`,
