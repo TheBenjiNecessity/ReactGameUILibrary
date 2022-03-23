@@ -30,16 +30,6 @@ const SHAPE_ICON = {
     [SHAPE.PENTAGON]: Pentagon,
 };
 
-export const SHAPE_CLASS = {
-    [SHAPE.TRIANGLE]: "triangle",
-    [SHAPE.PENTAGON]: "pentagon",
-    [SHAPE.CIRCLE]: "circle",
-    [SHAPE.SQUARE]: "square",
-    [SHAPE.HEXAGON]: "hexagon",
-    [SHAPE.OCTAGON]: "octagon",
-    [SHAPE.DIAMOND]: "diamond",
-};
-
 type Props = {
     shape: SHAPE;
 };
