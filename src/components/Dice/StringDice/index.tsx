@@ -1,6 +1,6 @@
-import React, { HTMLAttributes } from "react";
+import React from "react";
+import clsx from "clsx";
 import { textColorForHex } from "../../../services/color.service";
-import { SHAPE_CLASS } from "../../Shape";
 import Dice, { DieProps, DieShapeProps } from "../Dice";
 import classes from "./StringDice.module.scss";
 
@@ -11,9 +11,6 @@ type StringDieProps = {
 const StringDice = (props: StringDieProps & DieProps & DieShapeProps) => {
     const { faceValue, size, color, shape, ...restProps } = props;
     const textColor = textColorForHex(color);
-    const classNames = [classes["wrapper"], classes[SHAPE_CLASS[shape]]].join(
-        " "
-    );
     const minFontSize = Math.max(size - 8, 8);
     const wrapperStyles = {
         color: textColor,
@@ -23,7 +20,7 @@ const StringDice = (props: StringDieProps & DieProps & DieShapeProps) => {
 
     return (
         <Dice size={size} color={color} shape={shape} {...restProps}>
-            <div className={classNames} style={wrapperStyles}>
+            <div className={clsx(classes["wrapper"])} style={wrapperStyles}>
                 {faceValue}
             </div>
         </Dice>
