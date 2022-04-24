@@ -1,4 +1,5 @@
 import { useEffect, HTMLAttributes, useState } from "react";
+import { MILLISECONDS_IN_SECCOND } from "../../../lib/Constants/time.constants";
 import Point from "../../../lib/Geometry/Point";
 import AnimateProps from "../AnimateProps.type";
 import { getAnimationComponent } from "./keyFrame.service";
@@ -56,7 +57,7 @@ const AnimateObject = (
                         setKeyframeIndex(0);
                     }
                 }
-            }, time * 1000);
+            }, time * MILLISECONDS_IN_SECCOND);
         }
 
         return () => {
