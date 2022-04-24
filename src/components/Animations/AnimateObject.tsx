@@ -3,7 +3,7 @@ import Point from "../../lib/Geometry/Point";
 import AnimateProps from "./AnimateProps.type";
 import styled, { keyframes } from "styled-components";
 
-export type Keyframe = {
+export type IKeyframe = {
     point: Point;
     time: number;
     easing: string;
@@ -12,7 +12,7 @@ export type Keyframe = {
 type AnimateObjectProps = {
     keyframeIndex: number;
     setKeyframeIndex: Function;
-    keyframeList: Keyframe[];
+    keyframeList: IKeyframe[];
     loop: boolean;
     count: number;
 };
