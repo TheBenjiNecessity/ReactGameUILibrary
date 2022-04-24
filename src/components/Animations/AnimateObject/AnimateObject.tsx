@@ -1,7 +1,8 @@
 import { useMemo, useEffect, HTMLAttributes, useState } from "react";
 import Point from "../../../lib/Geometry/Point";
 import AnimateProps from "../AnimateProps.type";
-import styled, { keyframes } from "styled-components";
+import { getAnimationComponent, getKeyFrame } from "./keyFrame.service";
+import usePlayState from "../usePlayState.hook";
 
 export type IKeyframe = {
     point: Point;
@@ -30,6 +31,8 @@ const AnimateObject = (
         children,
     } = props;
 
+    const playState = usePlayState(play);
+
     const [currentCount, setCurrentCount] = useState(count);
 
     const movementArray = useMemo(() => {
@@ -43,16 +46,7 @@ const AnimateObject = (
                     const fromKeyframe = keyframeList[index];
                     const toKeyframe = keyframeList[0];
 
-                    return keyframes` 
-                        from {
-                            left: ${fromKeyframe.point.x}px;
-                            top: ${fromKeyframe.point.y}px;
-                        }
-                        to {
-                            left: ${toKeyframe.point.x}px;
-                            top: ${toKeyframe.point.y}px;
-                        }
-                    `;
+                    return getKeyFrame(fromKeyframe, toKeyframe);
                 } else {
                     return null;
                 }
@@ -61,26 +55,9 @@ const AnimateObject = (
             const fromKeyframe = keyframe;
             const toKeyframe = keyframeList[index + 1];
 
-            return keyframes` 
-                from {
-                    left: ${fromKeyframe.point.x}px;
-                    top: ${fromKeyframe.point.y}px;
-                }
-                to {
-                    left: ${toKeyframe.point.x}px;
-                    top: ${toKeyframe.point.y}px;
-                }
-            `;
+            return getKeyFrame(fromKeyframe, toKeyframe);
         });
     }, [keyframeList, loop]);
-
-    const playState = useMemo(() => {
-        if (play) {
-            return "running";
-        } else {
-            return "paused";
-        }
-    }, [play]);
 
     const currentKeyframe = useMemo(() => {
         return movementArray[keyframeIndex];
@@ -90,14 +67,13 @@ const AnimateObject = (
         return keyframeList[keyframeIndex];
     }, [keyframeIndex, keyframeList]);
 
-    const Component = styled.div`
-        display: inline-block;
-        position: absolute;
-        top: ${point.y}px;
-        left: ${point.x}px;
-        animation: ${currentKeyframe} ${time}s ${easing};
-        animation-play-state: ${playState};
-    `;
+    const Component = getAnimationComponent(
+        point,
+        currentKeyframe,
+        time,
+        easing,
+        playState
+    );
 
     useEffect(() => {
         if (play) {
