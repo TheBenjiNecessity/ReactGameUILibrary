@@ -1,5 +1,4 @@
 import { useMemo, useEffect, HTMLAttributes, useState } from "react";
-import _ from "lodash";
 import Point from "../../lib/Geometry/Point";
 import AnimateProps from "./AnimateProps.type";
 import styled, { keyframes } from "styled-components";
