@@ -1,5 +1,4 @@
-import { useMemo, useEffect, HTMLAttributes } from "react";
-import _ from "lodash";
+import { useMemo, HTMLAttributes } from "react";
 import styled, { keyframes } from "styled-components";
 
 type AnimateSpinProps = {
@@ -11,17 +10,15 @@ type AnimateSpinProps = {
     time?: number;
 };
 
-const AnimateSpin = (
-    {
-        play,
-        angleOffset = 0,
-        angleEnd = 360,
-        easing = 'linear',
-        count = 0,
-        time = 1,
-        children
-    }: AnimateSpinProps & HTMLAttributes<HTMLDivElement>
-) => {
+const AnimateSpin = ({
+    play,
+    angleOffset = 0,
+    angleEnd = 360,
+    easing = "linear",
+    count = 0,
+    time = 1,
+    children,
+}: AnimateSpinProps & HTMLAttributes<HTMLDivElement>) => {
     const rotation = useMemo(() => {
         return keyframes` 
             from {
@@ -35,7 +32,7 @@ const AnimateSpin = (
 
     const iterationCount = useMemo(() => {
         if (count === 0) {
-            return 'infinite';
+            return "infinite";
         } else {
             return count;
         }
@@ -43,9 +40,9 @@ const AnimateSpin = (
 
     const playState = useMemo(() => {
         if (play) {
-            return 'running';
+            return "running";
         } else {
-            return 'paused';
+            return "paused";
         }
     }, [play]);
 
@@ -56,7 +53,7 @@ const AnimateSpin = (
         animation-play-state: ${playState};
     `;
 
-    return <Component>{children}</Component>
+    return <Component>{children}</Component>;
 };
 
 export default AnimateSpin;
