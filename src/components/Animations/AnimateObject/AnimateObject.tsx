@@ -1,6 +1,6 @@
 import { useMemo, useEffect, HTMLAttributes, useState } from "react";
-import Point from "../../lib/Geometry/Point";
-import AnimateProps from "./AnimateProps.type";
+import Point from "../../../lib/Geometry/Point";
+import AnimateProps from "../AnimateProps.type";
 import styled, { keyframes } from "styled-components";
 
 export type IKeyframe = {
