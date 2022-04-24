@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import { ComponentMeta } from "@storybook/react";
 
 import AnimateSpin from "./AnimateSpin";
-import AnimateObject from "./AnimateObject";
+import AnimateObject from "./AnimateObject/AnimateObject";
 import Point from "../../lib/Geometry/Point";
 
 export default {
