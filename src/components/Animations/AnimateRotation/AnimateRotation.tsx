@@ -1,7 +1,7 @@
 import { useMemo, HTMLAttributes } from "react";
 import styled, { keyframes } from "styled-components";
 
-type AnimateSpinProps = {
+type AnimateRotationProps = {
     play: boolean;
     angleOffset?: number;
     angleEnd?: number;
@@ -10,7 +10,7 @@ type AnimateSpinProps = {
     time?: number;
 };
 
-const AnimateSpin = ({
+const AnimateRotation = ({
     play,
     angleOffset = 0,
     angleEnd = 360,
@@ -18,7 +18,7 @@ const AnimateSpin = ({
     count = 0,
     time = 1,
     children,
-}: AnimateSpinProps & HTMLAttributes<HTMLDivElement>) => {
+}: AnimateRotationProps & HTMLAttributes<HTMLDivElement>) => {
     const rotation = useMemo(() => {
         return keyframes` 
             from {
@@ -56,4 +56,4 @@ const AnimateSpin = ({
     return <Component>{children}</Component>;
 };
 
-export default AnimateSpin;
+export default AnimateRotation;

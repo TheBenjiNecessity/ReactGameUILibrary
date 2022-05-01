@@ -1,26 +1,26 @@
 import React, { useState, useMemo } from "react";
 import { ComponentMeta } from "@storybook/react";
 
-import AnimateSpin from "./AnimateSpin/AnimateSpin";
-import AnimateObject from "./AnimateObject/AnimateObject";
+import AnimateRotation from "./AnimateRotation/AnimateRotation";
+import AnimateTranslation from "./AnimateTranslation/AnimateTranslation";
 import Point from "../../lib/Geometry/Point";
 import AnimateFlip from "./AnimateFlip/AnimateFlip";
 
 export default {
-    title: "AnimateSpin",
-    component: AnimateSpin,
+    title: "AnimateRotation",
+    component: AnimateRotation,
     argTypes: {},
-} as ComponentMeta<typeof AnimateSpin>;
+} as ComponentMeta<typeof AnimateRotation>;
 
 export const Primary = (args: any) => {
-    return <AnimateSpin {...args}>test</AnimateSpin>;
+    return <AnimateRotation {...args}>test</AnimateRotation>;
 };
 
 Primary.args = {
     play: true,
 };
 
-Primary.storyName = "AnimateSpin";
+Primary.storyName = "AnimateRotation";
 
 export const Secondary = (args: any) => {
     const [play, setPlay] = useState(false);
@@ -40,7 +40,7 @@ export const Secondary = (args: any) => {
         <>
             <button onClick={() => setPlay(!play)}>{playMessage}</button>
             <button onClick={() => setKeyframeIndex(0)}>Reset</button>
-            <AnimateObject
+            <AnimateTranslation
                 play={play}
                 keyframeList={keyframeList}
                 keyframeIndex={keyframeIndex}
@@ -49,7 +49,7 @@ export const Secondary = (args: any) => {
                 count={3}
             >
                 test
-            </AnimateObject>
+            </AnimateTranslation>
         </>
     );
 };
@@ -58,7 +58,7 @@ Secondary.args = {
     play: true,
 };
 
-Secondary.storyName = "AnimateObject";
+Secondary.storyName = "AnimateTranslation";
 
 export const Tertiary = (args: any) => {
     const [flip, setFlip] = useState(false);

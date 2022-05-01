@@ -10,7 +10,7 @@ export type IKeyframe = {
     easing: string;
 };
 
-type AnimateObjectProps = {
+type AnimateTranslationProps = {
     keyframeIndex: number;
     setKeyframeIndex: Function;
     keyframeList: IKeyframe[];
@@ -21,8 +21,8 @@ type AnimateObjectProps = {
     time?: number;
 };
 
-const AnimateObject = (
-    props: AnimateObjectProps & HTMLAttributes<HTMLDivElement>
+const AnimateTranslation = (
+    props: AnimateTranslationProps & HTMLAttributes<HTMLDivElement>
 ) => {
     const {
         play,
@@ -79,4 +79,4 @@ const AnimateObject = (
     return <Component>{children}</Component>;
 };
 
-export default AnimateObject;
+export default AnimateTranslation;

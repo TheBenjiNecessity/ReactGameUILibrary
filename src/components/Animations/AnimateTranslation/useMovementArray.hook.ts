@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { IKeyframe } from "./AnimateObject";
+import { IKeyframe } from "./AnimateTranslation";
 import { getKeyFrame } from "./keyFrame.service";
 
 const useMovementArray = (keyframeList: IKeyframe[], loop: boolean) => {

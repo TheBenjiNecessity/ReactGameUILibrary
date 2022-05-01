@@ -1,6 +1,6 @@
 import styled, { Keyframes, keyframes } from "styled-components";
 import Point from "../../../lib/Geometry/Point";
-import { IKeyframe } from "./AnimateObject";
+import { IKeyframe } from "./AnimateTranslation";
 
 export const getKeyFrame = (fromKeyframe: IKeyframe, toKeyframe: IKeyframe) => {
     return keyframes` 
