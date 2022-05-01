@@ -4,6 +4,7 @@ import { ComponentMeta } from "@storybook/react";
 import AnimateSpin from "./AnimateSpin";
 import AnimateObject from "./AnimateObject/AnimateObject";
 import Point from "../../lib/Geometry/Point";
+import AnimateFlip from "./AnimateFlip/AnimateFlip";
 
 export default {
     title: "AnimateSpin",
@@ -58,3 +59,44 @@ Secondary.args = {
 };
 
 Secondary.storyName = "AnimateObject";
+
+export const Tertiary = (args: any) => {
+    const [flip, setFlip] = useState(false);
+
+    const cardStyles = {
+        height: "300px",
+        width: "200px",
+    };
+
+    const cardStylesInner = {
+        height: "100%",
+        width: "100%",
+    };
+
+    return (
+        <>
+            <button onClick={() => setFlip(!flip)}>flip</button>
+            <AnimateFlip
+                flip={flip}
+                back={
+                    <div style={{ ...cardStylesInner, backgroundColor: "red" }}>
+                        blah
+                    </div>
+                }
+                use3D={true}
+                flipSpeed={0.8}
+                style={cardStyles}
+            >
+                <div style={{ ...cardStylesInner, backgroundColor: "blue" }}>
+                    test
+                </div>
+            </AnimateFlip>
+        </>
+    );
+};
+
+Tertiary.args = {
+    play: true,
+};
+
+Tertiary.storyName = "AnimateFlip";
