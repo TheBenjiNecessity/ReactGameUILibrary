@@ -8,6 +8,7 @@ type AnimateFlipProps = {
     back: ReactNode;
     use3D: boolean;
     flipSpeed: number;
+    didFlip: Function;
 };
 
 type InnerDivStyle = {
@@ -29,7 +30,8 @@ const FlipContainerOuter = styled.div`
 const AnimateFlip = (
     props: AnimateFlipProps & HTMLAttributes<HTMLDivElement>
 ) => {
-    const { use3D, flip, flipSpeed, back, children, ...restProps } = props;
+    const { use3D, flip, flipSpeed, back, didFlip, children, ...restProps } =
+        props;
 
     const innerClassNames = clsx(
         classes["flip-container-inner"],
@@ -45,6 +47,7 @@ const AnimateFlip = (
             <FlipContainerInner
                 flipSpeed={flipSpeed}
                 className={innerClassNames}
+                onTransitionEnd={(event) => didFlip(flip, event)}
             >
                 <div className={classes["flip-container-front"]}>
                     {children}

@@ -86,6 +86,7 @@ export const Tertiary = (args: any) => {
                 use3D={true}
                 flipSpeed={0.8}
                 style={cardStyles}
+                didFlip={(flipped: boolean) => console.log("did flip", flipped)}
             >
                 <div style={{ ...cardStylesInner, backgroundColor: "blue" }}>
                     test
