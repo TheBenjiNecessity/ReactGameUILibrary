@@ -1,7 +1,6 @@
 import { useEffect, HTMLAttributes, useState } from "react";
 import { MILLISECONDS_IN_SECCOND } from "../../../lib/Constants/time.constants";
 import Point from "../../../lib/Geometry/Point";
-import AnimateProps from "../AnimateProps.type";
 import { getAnimationComponent } from "./keyFrame.service";
 import useMovementArray from "./useMovementArray.hook";
 
@@ -17,10 +16,13 @@ type AnimateObjectProps = {
     keyframeList: IKeyframe[];
     loop: boolean;
     count: number;
+    play: boolean;
+    easing?: string;
+    time?: number;
 };
 
 const AnimateObject = (
-    props: AnimateObjectProps & AnimateProps & HTMLAttributes<HTMLDivElement>
+    props: AnimateObjectProps & HTMLAttributes<HTMLDivElement>
 ) => {
     const {
         play,
