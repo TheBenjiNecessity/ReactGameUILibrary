@@ -20,7 +20,7 @@ const StringDice = (props: StringDieProps & DieProps & DieShapeProps) => {
 
     return (
         <Dice size={size} color={color} shape={shape} {...restProps}>
-            <div className={clsx(classes["wrapper"])} style={wrapperStyles}>
+            <div className={classes["wrapper"]} style={wrapperStyles}>
                 {faceValue}
             </div>
         </Dice>
