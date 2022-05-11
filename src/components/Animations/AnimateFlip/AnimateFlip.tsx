@@ -3,12 +3,18 @@ import clsx from "clsx";
 import styled from "styled-components";
 import classes from "./AnimateFlip.module.scss";
 
+export enum FlipAxis {
+    X = 1,
+    Y,
+}
+
 type AnimateFlipProps = {
     flip: boolean;
     back: ReactNode;
     use3D: boolean;
     flipSpeed: number;
     didFlip: Function;
+    flipAxis?: FlipAxis;
 };
 
 type InnerDivStyle = {
@@ -30,12 +36,31 @@ const FlipContainerOuter = styled.div`
 const AnimateFlip = (
     props: AnimateFlipProps & HTMLAttributes<HTMLDivElement>
 ) => {
-    const { use3D, flip, flipSpeed, back, didFlip, children, ...restProps } =
-        props;
+    const {
+        use3D,
+        flip,
+        flipSpeed,
+        flipAxis,
+        back,
+        didFlip,
+        children,
+        ...restProps
+    } = props;
 
     const innerClassNames = clsx(
         classes["flip-container-inner"],
-        flip && classes["flipped"]
+        flip && classes["flipped"],
+        flipAxis === FlipAxis.X ? classes["X"] : classes["Y"]
+    );
+
+    const frontClassNames = clsx(
+        classes["flip-container-front"],
+        flipAxis === FlipAxis.X ? classes["X"] : classes["Y"]
+    );
+
+    const backClassNames = clsx(
+        classes["flip-container-back"],
+        flipAxis === FlipAxis.X ? classes["X"] : classes["Y"]
     );
 
     return (
@@ -49,10 +74,8 @@ const AnimateFlip = (
                 className={innerClassNames}
                 onTransitionEnd={(event) => didFlip(flip, event)}
             >
-                <div className={classes["flip-container-front"]}>
-                    {children}
-                </div>
-                <div className={classes["flip-container-back"]}>{back}</div>
+                <div className={frontClassNames}>{children}</div>
+                <div className={backClassNames}>{back}</div>
             </FlipContainerInner>
         </FlipContainerOuter>
     );

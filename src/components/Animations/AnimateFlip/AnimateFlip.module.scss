@@ -9,8 +9,12 @@
     transform-style: preserve-3d;
 }
 
-.flip-container-inner.flipped {
+.flip-container-inner.flipped.Y {
     transform: rotateY(180deg);
+}
+
+.flip-container-inner.flipped.X {
+    transform: rotateX(180deg);
 }
 
 .flip-container-front,
@@ -24,10 +28,18 @@
     backface-visibility: hidden;
 }
 
-.flip-container-front {
+.flip-container-front.Y {
     transform: rotateY(0deg);
 }
 
-.flip-container-back {
+.flip-container-back.Y {
     transform: rotateY(180deg);
+}
+
+.flip-container-front.X {
+    transform: rotateX(0deg);
+}
+
+.flip-container-back.X {
+    transform: rotateX(180deg);
 }
