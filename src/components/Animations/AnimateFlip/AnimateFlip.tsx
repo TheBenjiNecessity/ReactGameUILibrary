@@ -2,11 +2,7 @@ import { HTMLAttributes, ReactNode } from "react";
 import clsx from "clsx";
 import styled from "styled-components";
 import classes from "./AnimateFlip.module.scss";
-
-export enum FlipAxis {
-    X = 1,
-    Y,
-}
+import Axis from "../../../lib/Geometry/Axis";
 
 type AnimateFlipProps = {
     flip: boolean;
@@ -14,7 +10,7 @@ type AnimateFlipProps = {
     use3D: boolean;
     flipSpeed: number;
     didFlip: Function;
-    flipAxis?: FlipAxis;
+    flipAxis?: Axis;
 };
 
 type InnerDivStyle = {
@@ -50,17 +46,17 @@ const AnimateFlip = (
     const innerClassNames = clsx(
         classes["flip-container-inner"],
         flip && classes["flipped"],
-        flipAxis === FlipAxis.X ? classes["X"] : classes["Y"]
+        flipAxis === Axis.X ? classes["X"] : classes["Y"]
     );
 
     const frontClassNames = clsx(
         classes["flip-container-front"],
-        flipAxis === FlipAxis.X ? classes["X"] : classes["Y"]
+        flipAxis === Axis.X ? classes["X"] : classes["Y"]
     );
 
     const backClassNames = clsx(
         classes["flip-container-back"],
-        flipAxis === FlipAxis.X ? classes["X"] : classes["Y"]
+        flipAxis === Axis.X ? classes["X"] : classes["Y"]
     );
 
     return (
