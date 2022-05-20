@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ComponentMeta } from "@storybook/react";
-import AnimateFlip, { FlipAxis } from "./AnimateFlip";
+import AnimateFlip from "./AnimateFlip";
+import Axis from "../../../lib/Geometry/Axis";
 
 export default {
     title: "AnimateFlip",
@@ -75,7 +76,7 @@ export const Secondary = (args: any) => {
                 }
                 use3D={true}
                 flipSpeed={0.8}
-                flipAxis={FlipAxis.X}
+                flipAxis={Axis.X}
                 style={cardStyles}
                 didFlip={(flipped: boolean) => console.log("did flip", flipped)}
             >
