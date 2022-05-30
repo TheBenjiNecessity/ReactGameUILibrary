@@ -13,11 +13,11 @@ type AnimateWiggleProps = {
     onAnimationEnd?: Function;
 };
 
-const AnimateTranslation = (
+const AnimateWiggle = (
     props: AnimateWiggleProps & HTMLAttributes<HTMLDivElement>
 ) => {
     const {
-        count = 1,
+        count = 0,
         axis = Axis.X,
         easing = "linear",
         time = 1,
@@ -25,6 +25,7 @@ const AnimateTranslation = (
         play,
         onAnimationEnd,
         children,
+        ...restProps
     } = props;
     const playState = play ? "running" : "paused";
     const iterationCount = count > 0 ? count.toString() : "infinite";
@@ -39,7 +40,11 @@ const AnimateTranslation = (
         point
     );
 
-    return <Component onAnimationEnd={onAnimationEnd}>{children}</Component>;
+    return (
+        <Component onAnimationEnd={onAnimationEnd} {...restProps}>
+            {children}
+        </Component>
+    );
 };
 
-export default AnimateTranslation;
+export default AnimateWiggle;
