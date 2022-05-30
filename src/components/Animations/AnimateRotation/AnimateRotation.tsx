@@ -18,6 +18,7 @@ const AnimateRotation = ({
     count = 0,
     time = 1,
     children,
+    ...restProps
 }: AnimateRotationProps & HTMLAttributes<HTMLDivElement>) => {
     const rotation = useMemo(() => {
         return keyframes` 
@@ -53,7 +54,7 @@ const AnimateRotation = ({
         animation-play-state: ${playState};
     `;
 
-    return <Component>{children}</Component>;
+    return <Component {...restProps}>{children}</Component>;
 };
 
 export default AnimateRotation;
