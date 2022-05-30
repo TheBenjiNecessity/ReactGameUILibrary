@@ -4,7 +4,7 @@ import Point from "../../../lib/Geometry/Point";
 const getKeyFrames = (offset: Point) => {
     return keyframes` 
         0% {
-            transform: translate(${offset.x}px, ${offset.y}px);
+            transform: translate(0px, 0px);
         }
         10% {
             transform: translate(-${offset.x}px, -${offset.y}px);
