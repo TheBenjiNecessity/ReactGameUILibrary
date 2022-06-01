@@ -23,7 +23,6 @@ const AnimateWiggle = (
         time = 1,
         offset = 1,
         play,
-        onAnimationEnd,
         children,
         ...restProps
     } = props;
@@ -40,11 +39,7 @@ const AnimateWiggle = (
         point
     );
 
-    return (
-        <Component onAnimationEnd={onAnimationEnd} {...restProps}>
-            {children}
-        </Component>
-    );
+    return <Component {...restProps}>{children}</Component>;
 };
 
 export default AnimateWiggle;
