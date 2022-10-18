@@ -1,4 +1,7 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useMemo } from "react";
+import useChildrenOfTypeError from "../../hooks/useChildrenOfTypeError.hook";
+import ArrayView from "../Helpers/ArrayView/ArrayView";
+import TimedView from "../Helpers/TimedView/TimedView";
 import Chapter from "./Chapter";
 
 type StoryProps = {
@@ -29,7 +32,19 @@ const Story = ({
     getNextIndex = (index: number) => index + 1,
     children,
 }: StoryProps) => {
-    const childArray = React.Children.toArray(children);
+    useChildrenOfTypeError(children, "Chapter", "Story");
+
+    const chapterDuration = useMemo(() => {
+        const child = React.Children.toArray(children)[chapterIndex];
+
+        if (React.isValidElement<{ duration: number }>(child)) {
+            const { duration } = child.props;
+
+            return duration;
+        }
+
+        return 0;
+    }, [chapterIndex, children]);
 
     const goToNextStep = useCallback(() => {
         const nextChapterId = getNextIndex(chapterIndex);
@@ -50,21 +65,15 @@ const Story = ({
         setChapterIndex,
     ]);
 
-    // Start the next timer if there is one
-    useEffect(() => {
-        const child = React.Children.toArray(children)[chapterIndex];
-
-        if (React.isValidElement<{ duration: number }>(child)) {
-            const { duration } = child.props;
-
-            if (activate && duration) {
-                const timer = setTimeout(goToNextStep, Math.abs(duration));
-                return () => clearTimeout(timer);
-            }
-        }
-    }, [activate, chapterIndex, childArray, children, goToNextStep]);
-
-    return <>{React.Children.toArray(children)[chapterIndex]}</>;
+    return (
+        <TimedView
+            time={chapterDuration}
+            play={activate}
+            onTimerEnd={goToNextStep}
+        >
+            <ArrayView index={chapterIndex}>{children}</ArrayView>
+        </TimedView>
+    );
 };
 
 Story.Chapter = Chapter;
