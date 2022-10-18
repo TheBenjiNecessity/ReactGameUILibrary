@@ -1,4 +1,5 @@
 import { ComponentMeta } from "@storybook/react";
+import { useState } from "react";
 import AnimateRandom from "./AnimateRandom";
 
 export default {
@@ -8,8 +9,13 @@ export default {
 } as ComponentMeta<typeof AnimateRandom>;
 
 export const Primary = (args: any) => {
+    const [index, setIndex] = useState(-1);
     return (
-        <AnimateRandom {...args}>
+        <AnimateRandom
+            {...args}
+            currentRandomIndex={index}
+            setCurrentRandomIndex={setIndex}
+        >
             <AnimateRandom.View>one</AnimateRandom.View>
             <AnimateRandom.View>two</AnimateRandom.View>
             <AnimateRandom.View>three</AnimateRandom.View>

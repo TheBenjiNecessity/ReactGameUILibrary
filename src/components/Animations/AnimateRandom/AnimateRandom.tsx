@@ -8,6 +8,8 @@ import View from "./AnimateRandom.view";
 type AnimateRandomProps = {
     play: boolean;
     time?: number;
+    currentRandomIndex: number;
+    setCurrentRandomIndex: Function;
 };
 
 /**
@@ -20,10 +22,10 @@ type AnimateRandomProps = {
 const AnimateRandom = ({
     play,
     time = 1,
+    currentRandomIndex,
+    setCurrentRandomIndex,
     children,
 }: AnimateRandomProps & HTMLAttributes<HTMLDivElement>) => {
-    const [currentRandomIndex, setCurrentRandomIndex] = useState(-1);
-
     useChildrenOfTypeError(children, "View", "AnimateRandom");
 
     const onTimerEnd = useCallback(() => {
@@ -33,7 +35,7 @@ const AnimateRandom = ({
             randomIndex = _.random(0, length - 1);
         }
         setCurrentRandomIndex(randomIndex);
-    }, [children, currentRandomIndex]);
+    }, [children, currentRandomIndex, setCurrentRandomIndex]);
 
     return (
         <TimedView time={time} play={play} onTimerEnd={onTimerEnd}>
