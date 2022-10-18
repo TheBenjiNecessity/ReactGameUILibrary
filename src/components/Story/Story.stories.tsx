@@ -32,7 +32,7 @@ export const Primary = () => {
             <div>{message}</div>
             <div>
                 <Story
-                    activate={activate}
+                    play={activate}
                     didGoNext={didGoNext}
                     didEnd={didEnd}
                     chapterIndex={chapterIndex}
