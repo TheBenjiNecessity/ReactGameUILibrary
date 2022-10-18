@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { HTMLAttributes, useState, useCallback } from "react";
+import React, { HTMLAttributes, useCallback } from "react";
 import useChildrenOfTypeError from "../../../hooks/useChildrenOfTypeError.hook";
 import ArrayView from "../../Helpers/ArrayView/ArrayView";
 import TimedView from "../../Helpers/TimedView/TimedView";
@@ -8,8 +8,8 @@ import View from "./AnimateRandom.view";
 type AnimateRandomProps = {
     play: boolean;
     time?: number;
-    currentRandomIndex: number;
-    setCurrentRandomIndex: Function;
+    index: number;
+    setIndex: Function;
 };
 
 /**
@@ -22,24 +22,24 @@ type AnimateRandomProps = {
 const AnimateRandom = ({
     play,
     time = 1,
-    currentRandomIndex,
-    setCurrentRandomIndex,
+    index,
+    setIndex,
     children,
 }: AnimateRandomProps & HTMLAttributes<HTMLDivElement>) => {
     useChildrenOfTypeError(children, "View", "AnimateRandom");
 
     const onTimerEnd = useCallback(() => {
-        let randomIndex = currentRandomIndex;
-        while (randomIndex === currentRandomIndex) {
+        let randomIndex = index;
+        while (randomIndex === index) {
             const { length } = React.Children.toArray(children);
             randomIndex = _.random(0, length - 1);
         }
-        setCurrentRandomIndex(randomIndex);
-    }, [children, currentRandomIndex, setCurrentRandomIndex]);
+        setIndex(randomIndex);
+    }, [children, index, setIndex]);
 
     return (
         <TimedView time={time} play={play} onTimerEnd={onTimerEnd}>
-            <ArrayView index={currentRandomIndex}>{children}</ArrayView>
+            <ArrayView index={index}>{children}</ArrayView>
         </TimedView>
     );
 };

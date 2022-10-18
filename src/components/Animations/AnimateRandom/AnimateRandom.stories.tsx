@@ -11,11 +11,7 @@ export default {
 export const Primary = (args: any) => {
     const [index, setIndex] = useState(-1);
     return (
-        <AnimateRandom
-            {...args}
-            currentRandomIndex={index}
-            setCurrentRandomIndex={setIndex}
-        >
+        <AnimateRandom {...args} index={index} setIndex={setIndex}>
             <AnimateRandom.View>one</AnimateRandom.View>
             <AnimateRandom.View>two</AnimateRandom.View>
             <AnimateRandom.View>three</AnimateRandom.View>
