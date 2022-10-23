@@ -27,4 +27,12 @@ export default class Point {
     translateY(y: number) {
         this.translate(0, y);
     }
+
+    log(id?: string) {
+        if (id) {
+            console.log(`${id}: x => ${this.x} y=> ${this.y}`);
+        } else {
+            console.log(`Point: x => ${this.x} y=> ${this.y}`);
+        }
+    }
 }
