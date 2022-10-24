@@ -44,7 +44,7 @@ export default class Rect {
         this.size.scaleY(y);
     }
 
-    contains(containedPoint: Point) {
+    containsPoint(containedPoint: Point) {
         if (
             containedPoint.x < this.point.x ||
             containedPoint.y < this.point.y
@@ -60,5 +60,13 @@ export default class Rect {
         }
 
         return true;
+    }
+
+    containsRect(containedRect: Rect) {
+        return false;
+    }
+
+    intersects(containedRect: Rect) {
+        return false;
     }
 }
