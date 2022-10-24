@@ -17,7 +17,6 @@ const DragWrapper = (
         if (setPosition) {
             const { x, y } = data;
             const point = new Point(x, y);
-            point.log();
             setPosition(point);
         }
     };
