@@ -15,8 +15,8 @@ export const Primary: ComponentStory<typeof DragWrapper> = () => {
         <DragWrapper
             position={position}
             setPosition={setPosition}
-            onStart={() => console.log("started")}
-            onStop={() => console.log("stoped")}
+            onStart={(event, data) => console.log("started", event, data)}
+            onStop={(event, data) => console.log("stoped", event, data)}
         >
             Test
         </DragWrapper>

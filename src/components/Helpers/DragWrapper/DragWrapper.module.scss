@@ -1,4 +1,6 @@
 .drag-wrapper-inner {
+    display: inline-block;
+
     &:active {
         cursor: none;
     }

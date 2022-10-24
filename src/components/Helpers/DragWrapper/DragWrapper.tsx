@@ -6,6 +6,7 @@ import classes from "./DragWrapper.module.scss";
 export type DragWrapperProps = {
     position?: Point;
     setPosition?: (point: Point) => void;
+    onMouseDown?: (event: MouseEvent) => void;
     onStart?: (event: DraggableEvent, data: DraggableData) => void;
     onStop?: (event: DraggableEvent, data: DraggableData) => void;
 };
@@ -13,7 +14,8 @@ export type DragWrapperProps = {
 const DragWrapper = (
     props: DragWrapperProps & HTMLAttributes<HTMLDivElement>
 ) => {
-    const { position, setPosition, children, onStop, onStart } = props;
+    const { position, setPosition, children, onStop, onStart, onMouseDown } =
+        props;
 
     const _onStop = useCallback(
         (event: DraggableEvent, data: DraggableData) => {
@@ -29,7 +31,12 @@ const DragWrapper = (
     );
 
     return (
-        <Draggable position={position} onStop={_onStop} onStart={onStart}>
+        <Draggable
+            position={position}
+            onStop={_onStop}
+            onStart={onStart}
+            onMouseDown={onMouseDown}
+        >
             <div className={classes["drag-wrapper-inner"]}>{children}</div>
         </Draggable>
     );
