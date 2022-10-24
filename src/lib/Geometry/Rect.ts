@@ -43,4 +43,22 @@ export default class Rect {
     scaleY(y: number) {
         this.size.scaleY(y);
     }
+
+    contains(containedPoint: Point) {
+        if (
+            containedPoint.x < this.point.x ||
+            containedPoint.y < this.point.y
+        ) {
+            return false;
+        }
+
+        if (
+            containedPoint.x > this.point.x + this.size.width ||
+            containedPoint.y > this.point.y + this.size.height
+        ) {
+            return false;
+        }
+
+        return true;
+    }
 }
