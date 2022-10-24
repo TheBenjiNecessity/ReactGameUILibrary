@@ -12,7 +12,12 @@ export const Primary: ComponentStory<typeof DragWrapper> = () => {
     const [position, setPosition] = useState(Point.zero);
 
     return (
-        <DragWrapper position={position} setPosition={setPosition}>
+        <DragWrapper
+            position={position}
+            setPosition={setPosition}
+            onStart={() => console.log("started")}
+            onStop={() => console.log("stoped")}
+        >
             Test
         </DragWrapper>
     );

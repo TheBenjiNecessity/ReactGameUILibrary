@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from "react";
+import React, { HTMLAttributes, useCallback } from "react";
 import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 import Point from "../../../lib/Geometry/Point";
 import classes from "./DragWrapper.module.scss";
@@ -6,23 +6,30 @@ import classes from "./DragWrapper.module.scss";
 export type DragWrapperProps = {
     position?: Point;
     setPosition?: (point: Point) => void;
+    onStart?: (event: DraggableEvent, data: DraggableData) => void;
+    onStop?: (event: DraggableEvent, data: DraggableData) => void;
 };
 
 const DragWrapper = (
     props: DragWrapperProps & HTMLAttributes<HTMLDivElement>
 ) => {
-    const { position, setPosition, children } = props;
+    const { position, setPosition, children, onStop, onStart } = props;
 
-    const onStop = (event: DraggableEvent, data: DraggableData) => {
-        if (setPosition) {
-            const { x, y } = data;
-            const point = new Point(x, y);
-            setPosition(point);
-        }
-    };
+    const _onStop = useCallback(
+        (event: DraggableEvent, data: DraggableData) => {
+            if (setPosition) {
+                setPosition(new Point(data.x, data.y));
+            }
+
+            if (onStop) {
+                onStop(event, data);
+            }
+        },
+        [onStop, setPosition]
+    );
 
     return (
-        <Draggable position={position} onStop={onStop}>
+        <Draggable position={position} onStop={_onStop} onStart={onStart}>
             <div className={classes["drag-wrapper-inner"]}>{children}</div>
         </Draggable>
     );
