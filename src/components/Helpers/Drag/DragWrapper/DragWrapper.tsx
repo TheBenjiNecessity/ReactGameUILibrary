@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, useCallback } from "react";
 import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
-import Point from "../../../lib/Geometry/Point";
+import Point from "../../../../lib/Geometry/Point";
 import classes from "./DragWrapper.module.scss";
 
 export type DragWrapperProps = {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import DragWrapper from "./DragWrapper";
-import Point from "../../../lib/Geometry/Point";
+import Point from "../../../../lib/Geometry/Point";
 
 export default {
     title: "DragWrapper",
