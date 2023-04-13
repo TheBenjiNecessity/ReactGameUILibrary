@@ -14,6 +14,34 @@ export default class Rect {
         return new Point(centerX, centerY);
     }
 
+    get topLeftPoint() {
+        return this.point;
+    }
+
+    get topRightPoint() {
+        return new Point(this.point.x + this.size.width, this.point.y);
+    }
+
+    get bottomLeftPoint() {
+        return new Point(this.point.x, this.point.y + this.size.height);
+    }
+
+    get bottomRightPoint() {
+        return new Point(
+            this.point.x + this.size.width,
+            this.point.y + this.size.height
+        );
+    }
+
+    get allPoints() {
+        return [
+            this.topLeftPoint,
+            this.topRightPoint,
+            this.bottomLeftPoint,
+            this.bottomRightPoint,
+        ];
+    }
+
     isEqualTo(rect: Rect) {
         return (
             this.size.isEqualTo(rect.size) && this.point.isEqualTo(rect.point)
@@ -63,10 +91,15 @@ export default class Rect {
     }
 
     containsRect(containedRect: Rect) {
-        return false;
+        return containedRect.allPoints.every((point) =>
+            this.containsPoint(point)
+        );
     }
 
-    intersects(containedRect: Rect) {
-        return false;
+    intersects(otherRect: Rect) {
+        return (
+            otherRect.allPoints.some((point) => this.containsPoint(point)) ||
+            this.allPoints.some((point) => otherRect.containsPoint(point))
+        );
     }
 }

@@ -77,4 +77,62 @@ describe("Rect class tests", () => {
         expect(rect.size.height).toEqual(1);
         expect(rect.size.width).toEqual(2);
     });
+
+    it("returns true for containsPoint", () => {
+        const rect = new Rect(Point.zero, new Size(10, 10));
+        const tl = Point.zero;
+        const tr = new Point(10, 0);
+        const bl = new Point(0, 10);
+        const br = new Point(10, 10);
+        const mid = new Point(5, 5);
+        const out1 = new Point(20, 20);
+        const out2 = new Point(-5, -5);
+        const out3 = new Point(20, 0);
+        const out4 = new Point(0, 20);
+        expect(rect.containsPoint(tl)).toEqual(true);
+        expect(rect.containsPoint(tr)).toEqual(true);
+        expect(rect.containsPoint(bl)).toEqual(true);
+        expect(rect.containsPoint(br)).toEqual(true);
+        expect(rect.containsPoint(mid)).toEqual(true);
+
+        expect(rect.containsPoint(out1)).toEqual(false);
+        expect(rect.containsPoint(out2)).toEqual(false);
+        expect(rect.containsPoint(out3)).toEqual(false);
+        expect(rect.containsPoint(out4)).toEqual(false);
+    });
+
+    it("returns true for intersect", () => {
+        const rect1 = new Rect(Point.zero, new Size(10, 10));
+        const rect2 = new Rect(new Point(1, 1), new Size(10, 10));
+        const rect3 = new Rect(new Point(10, 10), new Size(10, 10));
+        const rect4 = new Rect(new Point(10, 0), new Size(10, 10));
+        const rect5 = new Rect(new Point(0, 10), new Size(10, 10));
+        const rect6 = new Rect(new Point(-10, 0), new Size(10, 10));
+        const rect7 = new Rect(new Point(0, -10), new Size(10, 10));
+
+        const rect8 = new Rect(new Point(20, 20), new Size(10, 10));
+
+        expect(rect1.intersects(rect1)).toEqual(true);
+
+        expect(rect2.intersects(rect1)).toEqual(true);
+        expect(rect1.intersects(rect2)).toEqual(true);
+
+        expect(rect3.intersects(rect1)).toEqual(true);
+        expect(rect1.intersects(rect3)).toEqual(true);
+
+        expect(rect4.intersects(rect1)).toEqual(true);
+        expect(rect1.intersects(rect4)).toEqual(true);
+
+        expect(rect5.intersects(rect1)).toEqual(true);
+        expect(rect1.intersects(rect5)).toEqual(true);
+
+        expect(rect6.intersects(rect1)).toEqual(true);
+        expect(rect1.intersects(rect6)).toEqual(true);
+
+        expect(rect7.intersects(rect1)).toEqual(true);
+        expect(rect1.intersects(rect7)).toEqual(true);
+
+        expect(rect8.intersects(rect1)).toEqual(false);
+        expect(rect1.intersects(rect8)).toEqual(false);
+    });
 });
