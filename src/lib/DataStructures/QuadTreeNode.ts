@@ -101,4 +101,8 @@ export default class QuadTreeNode extends TreeNode {
 
         return [];
     }
+
+    hasItem(point: Point): boolean {
+        return this.itemsAtPoint(point).length > 0;
+    }
 }
