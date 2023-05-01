@@ -9,13 +9,21 @@ export type DragWrapperProps = {
     onMouseDown?: (event: MouseEvent) => void;
     onStart?: (event: DraggableEvent, data: DraggableData) => void;
     onStop?: (event: DraggableEvent, data: DraggableData) => void;
+    onDrag?: (event: DraggableEvent, data: DraggableData) => void;
 };
 
 const DragWrapper = (
     props: DragWrapperProps & HTMLAttributes<HTMLDivElement>
 ) => {
-    const { position, setPosition, children, onStop, onStart, onMouseDown } =
-        props;
+    const {
+        position,
+        setPosition,
+        children,
+        onStop,
+        onStart,
+        onDrag,
+        onMouseDown,
+    } = props;
 
     const _onStop = useCallback(
         (event: DraggableEvent, data: DraggableData) => {
@@ -35,6 +43,7 @@ const DragWrapper = (
             position={position}
             onStop={_onStop}
             onStart={onStart}
+            onDrag={onDrag}
             onMouseDown={onMouseDown}
         >
             <div className={classes["drag-wrapper-inner"]}>{children}</div>
