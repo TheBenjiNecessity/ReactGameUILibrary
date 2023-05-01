@@ -11,18 +11,8 @@ export interface QuadTreeItem {
 }
 
 export default class QuadTreeNode extends TreeNode {
-    constructor(
-        items: QuadTreeItem[],
-        private bounds: Rect,
-        topLeft?: QuadTreeNode,
-        topRight?: QuadTreeNode,
-        bottomLeft?: QuadTreeNode,
-        bottomRight?: QuadTreeNode
-    ) {
-        const nodes = [topLeft!, topRight!, bottomLeft!, bottomRight!].filter(
-            (item) => item !== null && typeof item !== "undefined"
-        );
-        super(items, nodes);
+    constructor(private bounds: Rect, items: QuadTreeItem[] = []) {
+        super(items, []);
     }
 
     get hasQuadrants(): boolean {
@@ -87,10 +77,10 @@ export default class QuadTreeNode extends TreeNode {
 
                 this.item = [];
                 this.children = [
-                    new QuadTreeNode(topLeftItems, tlBounds),
-                    new QuadTreeNode(topRightItems, trBounds),
-                    new QuadTreeNode(bottomLeftItems, blBounds),
-                    new QuadTreeNode(bottomRightItems, brBounds),
+                    new QuadTreeNode(tlBounds, topLeftItems),
+                    new QuadTreeNode(trBounds, topRightItems),
+                    new QuadTreeNode(blBounds, bottomLeftItems),
+                    new QuadTreeNode(brBounds, bottomRightItems),
                 ];
             }
         }
