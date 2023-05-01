@@ -6,7 +6,7 @@ import QuadTreeNode from "./QuadTreeNode";
 test("Adds items to quadtree in appropriate place", () => {
     const point = Point.zero;
     const size = new Size(100, 100);
-    const quadtree = new QuadTreeNode([], new Rect(point, size));
+    const quadtree = new QuadTreeNode(new Rect(point, size), []);
 
     quadtree.addItem({
         item: { test: "test1" },
